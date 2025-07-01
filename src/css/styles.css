@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4caf50;
+    padding: 2px 0;
+    margin-bottom: 2px;
+}
+
+#lineTitle {
+    font-size: 2.8rem;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+#currentTime {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #4caf50;
+    margin: 0;
+}
+
+#currentTime {
+    font-size: 1.5rem;
+}
+
+section {
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #4caf50;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2e2e2e;
+    table-layout: fixed;
+    margin: 0;
+}
+
+th, td {
+    border: 1px solid #4caf50;
+    padding: 4px 2px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 2.2rem;
+    width: auto;
+}
+
+th {
+    background-color: #440055;
+    font-weight: bold;
+    color: #fff;
+    font-size: 2rem;
+    padding: 3px 2px;
+}
+
+/* 双行表头第一行样式 */
+.double-header-table thead tr:first-child th {
+    position: relative;
+    
+}
+
+/* 双行表头第二行样式 */
+.double-header-table thead tr:last-child th {
+    background-color: #440055;
+    font-size: 1.8rem;
+    border-top:none
+}
+
+/* 跨行单元格样式 */
+.double-header-table th[rowspan="2"] {
+    vertical-align: middle;
+    background-color: #440055;
+    border-bottom: 1px solid #4caf50; /* 保持与其他单元格一致的底部边框 */
+}
+
+/* 第一行单元格的底部边框修改为虚线 */
+.double-header-table thead tr:first-child th:not([rowspan="2"]) {
+    border-bottom: none;
+}
+
+/* 双行表头中间列的箭头样式 */
+.double-header-table thead tr:first-child th:not([rowspan="2"]):after {
+    content: "↓";
+    display: block;
+    font-size: 1.4rem;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #4caf50;
+    opacity: 0.9;
+    z-index: 2;
+    text-shadow: 0px 0px 2px #000;
+}
+
+td {
+    color: #fff;
+}
+
+/* Status color classes */
+.status-normal {
+    background-color: #2e2e2e; /* Default background color */
+}
+
+.status-warning {
+    background-color: #ffa500; /* Warning color - orange */
+}
+
+.status-emergency {
+    background-color: #ff4444; /* Emergency color - red */
+}
+
+/* Ensure text remains visible on colored backgrounds */
+.status-warning td,
+.status-emergency td {
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Hide Today Target column */
+.today-target-column,
+.today-target-cell {
+    display: none !important;
+}
+
+.show-target-column .today-target-column,
+.show-target-column .today-target-cell {
+    display: table-cell !important;
+}
+
+#currentStatusBody tr td:nth-child(6),
+#currentStatusBody tr td:nth-child(7) {
+    color: #ff5555;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* 紧急状态下第6、7列高对比色 */
+.status-emergency td:nth-child(6),
+.status-emergency td:nth-child(7) {
+    color: #fff700 !important;   /* 明亮的黄色 */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #b30000;
+}
+
+#todayOutput {
+    font-weight: bold;
+    color: #4caf50; /* Green color for emphasis */
+    background-color: #333; /* Dark background for contrast */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.current-status table, .hourly-production table {
+    width: 100%;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.progress-container {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background-color: #444;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.progress-container span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+@media (max-width: 1280px) {
+    .container {
+        padding: 5px;
+    }
+
+    table{
+        min-width: 100%;
+    }
+    th, td {
+        font-size: 2.2rem;
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+
